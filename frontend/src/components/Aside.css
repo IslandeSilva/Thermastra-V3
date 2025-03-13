@@ -1,0 +1,114 @@
+/* Sidebar principal */
+.AsideContainer {
+  background-color: #FFF;
+  width: 250px;
+  height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  transition: all 0.3s ease;  /* Transição suave para todas as propriedades */
+  border: none;
+  overflow-y: auto;    /* Adiciona scroll vertical quando o conteúdo ultrapassar a altura */
+  border-right: 1px solid #dbdbdb;
+}
+
+/* Quando a Sidebar estiver colapsada */
+.AsideContainer.collapsed {
+  width: 0;  /* Remove a largura */
+  padding: 0;  /* Remove o padding */
+}
+
+/* Menu principal */
+.Menu {
+  flex-grow: 1;  /* Ocupa o espaço restante */
+  margin-top: 80px;
+}
+
+/* Lista de itens do menu */
+.Menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.Menu ul li {
+  margin-bottom: 5px;
+}
+
+/* Estilo dos links no menu */
+.Menu a {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 5px;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+  padding: 15px 0 15px 10px;
+}
+
+/* Estilo do hover nos links */
+.Menu a:hover {
+  background-color: #ffcfa1;
+}
+
+/* Ícones da sidebar */
+.aside {
+  margin-right: 10px;
+  color: #333;
+}
+
+.menus {
+  font-weight: 500;
+}
+
+/* Conteúdo da barra de navegação quando colapsada */
+.collapse-container {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Layout do conteúdo de cada item no menu */
+.collapse-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Esconde o botão quando a sidebar está colapsada */
+.collapsed .asidebtn {
+  display: none;
+}
+
+/* Media Query para dispositivos móveis (telas menores que 768px) */
+@media (max-width: 768px) {
+  /* Sidebar começa colapsada no mobile */
+  .AsideContainer {
+    width: 0;  /* Inicia com largura 0 */
+    padding: 0;
+  }
+
+  /* Quando a Sidebar estiver expandida no mobile */
+  .AsideContainer:not(.collapsed) {
+    width: 250px;  /* Sidebar expandida */
+    padding: 20px;
+  }
+
+  /* Esconde a seção de navegação e conteúdo da sidebar quando colapsada */
+  .AsideContainer.collapsed .Menu {
+    display: none;
+  }
+
+  /* Aplica um estilo mais amigável ao colapsar no mobile (ex: menu escondido) */
+  .AsideContainer:not(.collapsed) .Menu {
+    display: block;  /* Exibe o menu quando expandido */
+  }
+}

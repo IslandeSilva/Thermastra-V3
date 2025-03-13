@@ -1,0 +1,13 @@
+.main {
+  transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+.main.collapsed {
+  width: 100%; /* Quando a sidebar estiver fechada, ocupa a tela inteira */
+  margin-left: 0;  /* Não há mais a margem da sidebar */
+}
+
+.main.expanded {
+  width: calc(100% - 250px); /* Quando a sidebar estiver aberta, o main ocupa o restante da largura */
+  margin-left: 250px; /* Deixa espaço para a sidebar */
+}
