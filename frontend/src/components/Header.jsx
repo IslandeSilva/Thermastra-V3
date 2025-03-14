@@ -1,16 +1,31 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Logo from '../assets/LogoThermastra.png';
 import './Header.css';
 import { useCollapse } from '../components/CollapseContext';
 
+//components
+import UserMenu from '../components/UserMenu'
+
 function Header() {
 
   const { toggleCollapse } = useCollapse();  // Função para alternar o estado de colapso
+  const [isMenuVisible, setIsMenuVisible] = useState(false); // Estado para controlar a visibilidade do menu
+
 
   // Lógica de alternância da sidebar
   const handleToggleSidebar = () => {
     toggleCollapse();  // Isso alterna a classe no contexto para o colapso
   };
+
+
+
+
+
+  const toggleMenu = () => {
+    setIsMenuVisible(!isMenuVisible); // Alterna a visibilidade do menu
+  };
+
+
   return (
     <header className='bg-light text-dark d-flex align-items-center py-3 px-3 position-fixed top-0 left-0 w-100' style={{ borderBottom: "1px solid #DEE2E6", zIndex: "999" }}>
 
@@ -70,8 +85,10 @@ function Header() {
             className='btn'
             style={{ fontSize: "15px", border: "1px solid #DEE2E6" }}
             aria-label="Perfil"
+            onClick={toggleMenu}
           >
             <i className='bi bi-person-circle'></i>
+            {isMenuVisible && <UserMenu />}
           </button>
         </div>
       </div>
