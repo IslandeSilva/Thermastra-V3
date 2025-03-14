@@ -19,19 +19,19 @@ function Aside() {
             </li>
             <li>
               <a href=''>
-                <i className='aside bi bi-person-circle'></i>
+                <i className='aside bi bi-archive'></i>
                 Documentos
               </a>
             </li>
             <li>
               <a href=''>
-                <i className='aside bi bi-person-circle'></i>
+                <i className='aside bi bi-exclamation-square'></i>
                 Tickets
               </a>
             </li>
             <li>
               <a href=''>
-                <i className='aside bi bi-person-circle'></i>
+                <i className='aside bi bi-gear'></i>
                 Configurações
               </a>
             </li>

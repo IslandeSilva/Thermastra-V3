@@ -39,6 +39,7 @@
   margin-bottom: 5px;
 }
 
+
 /* Estilo dos links no menu */
 .Menu a {
   text-decoration: none;
@@ -62,6 +63,7 @@
 .aside {
   margin-right: 10px;
   color: #333;
+  padding-left: 10px;
 }
 
 .menus {
