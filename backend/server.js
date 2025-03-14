@@ -1,72 +1,48 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const db = require('./db');
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const app = express();
-const port = 3000;
+function News() {
+  const [newsData, setNewsData] = useState([]); // Estado para armazenar as notícias
+  const [error, setError] = useState(null); // Estado para armazenar o erro
 
-// Habilita o CORS para todas as origens
-app.use(cors());
+  // Efeito para buscar as notícias do backend
+  useEffect(() => {
+    // Fazendo a requisição para o backend
+    axios.get('http://localhost:3000/news')
+      .then(response => {
+        setNewsData(response.data); // Armazena os dados no estado
+        setError(null); // Limpa o erro em caso de sucesso
+      })
+      .catch(error => {
+        console.error('Erro ao buscar notícias:', error);
+        setError('Ocorreu um erro ao carregar as notícias. Tente novamente mais tarde.'); // Define a mensagem de erro
+      });
+  }, []); // O array vazio [] garante que a requisição seja feita apenas uma vez após o componente ser montado
 
-// Middleware
-app.use(bodyParser.json());
+  return (
+    <div className="news-container">
+      {/* Exibir alerta em caso de erro */}
+      {error && (
+        <div className="alert alert-danger" role="alert">
+          {error}
+        </div>
+      )}
 
-// Rota para registrar um usuário
-app.post('/register', (req, res) => {
-  const { name, email, birthdate, password } = req.body;
+      {/* Exibir notícias */}
+      {newsData.map((newsItem) => (
+        <div className="card mb-3" key={newsItem.id}>
+          <div className="card-header">
+            {newsItem.type} - {newsItem.postedAt}
+          </div>
+          <div className="card-body">
+            <h5 className="card-title">{newsItem.title}</h5>
+            <p className="card-text">{newsItem.message}</p>
+            <a href="#" className="btn btn-primary">Ver Notícia</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
-  const updatedAt = new Date().toISOString();
-
-  const query = `INSERT INTO users (name, email, birthdate, password, updatedAt)
-                 VALUES (?, ?, ?, ?, ?)`;
-  
-  db.run(query, [name, email, birthdate, password, updatedAt], function(err) {
-    if (err) {
-      return res.status(500).json({ error: err.message });
-    }
-    res.status(201).json({ id: this.lastID, name, email, birthdate, updatedAt });
-  });
-});
-
-// Rota para criar uma notícia
-app.post('/news', (req, res) => {
-  const { type, title, message } = req.body;
-
-  const postedAt = new Date().toISOString();
-  const updatedAt = postedAt;
-
-  const query = `INSERT INTO news (type, title, message, postedAt, updatedAt)
-                 VALUES (?, ?, ?, ?, ?)`;
-  
-  db.run(query, [type, title, message, postedAt, updatedAt], function(err) {
-    if (err) {
-      return res.status(500).json({ error: err.message });
-    }
-    res.status(201).json({
-      id: this.lastID,
-      type,
-      title,
-      message,
-      postedAt,
-      updatedAt
-    });
-  });
-});
-
-// Rota para listar todas as notícias
-app.get('/news', (req, res) => {
-  const query = 'SELECT * FROM news ORDER BY postedAt DESC';
-
-  db.all(query, [], (err, rows) => {
-    if (err) {
-      return res.status(500).json({ error: err.message });
-    }
-    res.json(rows);
-  });
-});
-
-// Iniciar o servidor
-app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`);
-});
+export default News;
