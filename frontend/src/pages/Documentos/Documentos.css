@@ -1,0 +1,20 @@
+/* Main content */
+.main {
+    transition: margin-left 0.3s ease; /* Suaviza a transição da margem esquerda */
+    margin-left: 0; /* Inicialmente sem margem */
+    margin-top: 100px;
+    width: 100%; /* Inicialmente ocupa toda a largura */
+    padding: 1rem; /* Adiciona algum espaçamento interno */
+    z-index: 999; /* Garante que o conteúdo principal fique acima da sidebar */
+  }
+  
+  /* Quando a sidebar está expandida */
+  .main.expanded {
+    margin-left: 250px; /* Desloca o conteúdo para a direita, criando espaço para a sidebar */
+  }
+  
+  /* Quando a sidebar está colapsada */
+  .main.collapsed {
+    margin-left: 0; /* Quando a sidebar está colapsada, o conteúdo principal volta à posição original */
+  }
+  

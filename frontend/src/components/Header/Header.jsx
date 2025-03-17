@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import Logo from '../assets/LogoThermastra.png';
+import Logo from '../../assets/LogoThermastra.png';
 import './Header.css';
-import { useCollapse } from '../components/CollapseContext';
+import { useCollapse } from '../../components/Aside/CollapseContext';
 
 //components
-import UserMenu from '../components/UserMenu'
+import UserMenu from '../../components/User/UserMenu'
 
 function Header() {
 
@@ -32,12 +32,13 @@ function Header() {
       <div className='d-flex gap-2 align-items-center'>
         {/* Logo: só visível no desktop */}
         <div className='d-none d-md-block'>
+        <a href='/Dashboard' style={{ textDecoration: "none"}}>
           <img
             src={Logo}
             alt="Logo Thermastra Aquecimento"
             className="Logo"
             style={{ width: "150px", marginRight: "30px" }}
-          />
+          /></a>
         </div>
 
         {/* Botão de alternância para sidebar: sempre visível */}

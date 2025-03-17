@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import './Dashboard.css';
+import './Configuracoes.css';
 import { useCollapse } from '../../components/Aside/CollapseContext'; 
 
 //Components
-import News from '../../components/News/News'
+import Docs from '../../components/Documentos/Docs'
 
-function Dashboard() {
+function Configuracoes() {
   // Controle de estado para colapsar ou expandir a sidebar
   const { isCollapsed } = useCollapse();  // Obtendo o estado e a função para alternar o estado
 
@@ -15,10 +15,10 @@ function Dashboard() {
       {/* Main content */}
       <main className={`main ${isCollapsed ? 'collapsed' : 'expanded'}`}>
         <div className="main-content">
-          <h3>Dashboard</h3>
-          <p>Últimas Notícias!</p>
+          <h3>Configurações</h3>
+          <p>Ajuste seus dados!</p>
           {/* Outros dados ou componentes da sua dashboard */}
-          <News />
+          Fazer aqui o componente de Configurações da Conta
         </div>
       </main>
 
@@ -26,4 +26,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default Configuracoes;

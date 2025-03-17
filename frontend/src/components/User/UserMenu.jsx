@@ -2,6 +2,8 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const UserMenu = () => {
+
+
   return (
     <div
       className="dropdown position-absolute"
@@ -14,19 +16,22 @@ const UserMenu = () => {
 
       <ul className="dropdown-menu card shadow-lg p-3" aria-labelledby="userMenuButton">
         <li>
-          <button className="dropdown-item">
+        <a href='/Configuracoes' style={{ textDecoration: "none"}}>
+          <button className="dropdown-item" >
             <i className='bi bi-gear' style={{ marginRight: "10px" }}></i>
-            Configurações</button>
+            Configurações</button></a>
         </li>
         <li>
+          <a href='/Tickets' style={{ textDecoration: "none"}}>
           <button className="dropdown-item">
             <i className='bi bi-exclamation-square' style={{ marginRight: "10px" }}></i>
-            Meus Tickets</button>
+            Meus Tickets</button></a>
         </li>
         <li>
+        <a href='/Logout' style={{ textDecoration: "none"}}>
           <button className="dropdown-item">
             <i className='bi bi-box-arrow-left' style={{ marginRight: "10px" }}></i>
-            Sair</button>
+            Sair</button></a>
         </li>
       </ul>
     </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import './Aside.css';
-import { useCollapse } from '../components/CollapseContext';  // Usando o contexto
+import { useCollapse } from '../../components/Aside/CollapseContext';  // Usando o contexto
 
 function Aside() {
   const { isCollapsed } = useCollapse();  // Obtendo o estado de colapso
@@ -12,25 +12,25 @@ function Aside() {
           <span>Painel</span>
           <ul>
             <li>
-              <a href=''>
+              <a href='/Dashboard'>
                 <i className='aside bi bi-person-circle'></i>
                 Dashboard
               </a>
             </li>
             <li>
-              <a href=''>
+              <a href='/Documentos'>
                 <i className='aside bi bi-archive'></i>
                 Documentos
               </a>
             </li>
             <li>
-              <a href=''>
+              <a href='/Tickets'>
                 <i className='aside bi bi-exclamation-square'></i>
                 Tickets
               </a>
             </li>
             <li>
-              <a href=''>
+              <a href='/Configuracoes'>
                 <i className='aside bi bi-gear'></i>
                 Configurações
               </a>
