@@ -7,8 +7,20 @@ function News() {
 
   // Efeito para buscar as notícias do backend
   useEffect(() => {
-    // Fazendo a requisição para o backend
-    axios.get('http://localhost:3000/news')
+    const token = localStorage.getItem('authToken'); // Verifica o token no localStorage
+
+    if (!token) {
+      // Se não houver token, mostra um erro e não faz a requisição
+      setError('Você não está autenticado. Por favor, faça login.');
+      return;
+    }
+
+    // Fazendo a requisição para o backend com o token no cabeçalho
+    axios.get('http://localhost:4000/api/news', {
+      headers: {
+        'Authorization': `Bearer ${token}`, // Envia o token no cabeçalho
+      }
+    })
       .then(response => {
         setNewsData(response.data); // Armazena os dados no estado
         setError(null); // Limpa o erro em caso de sucesso
@@ -33,7 +45,7 @@ function News() {
         newsData.map((newsItem) => (
           <div className="card mb-3" key={newsItem.id}>
             <div className="card-header">
-              {newsItem.type} - {newsItem.postedAt}
+              {newsItem.type} - {newsItem.createdAt}
             </div>
             <div className="card-body">
               <h5 className="card-title">{newsItem.title}</h5>

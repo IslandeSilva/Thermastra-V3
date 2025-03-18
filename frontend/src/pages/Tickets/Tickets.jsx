@@ -3,7 +3,7 @@ import './Tickets.css';
 import { useCollapse } from '../../components/Aside/CollapseContext'; 
 
 //Components
-import Docs from '../../components/Documentos/Docs'
+import TicketsList from '../../components/Tickets/Tickets'
 
 function Tickets() {
   // Controle de estado para colapsar ou expandir a sidebar
@@ -18,7 +18,7 @@ function Tickets() {
           <h3>Tickets</h3>
           <p>Lista de solicitações!</p>
           {/* Outros dados ou componentes da sua dashboard */}
-          Fazer aqui o componente de Ticket
+          <TicketsList />
         </div>
       </main>
 

@@ -3,10 +3,12 @@ import Logo from '../../assets/LogoThermastra.png';
 import './Header.css';
 import { useCollapse } from '../../components/Aside/CollapseContext';
 
+
 //components
 import UserMenu from '../../components/User/UserMenu'
 
 function Header() {
+
 
   const { toggleCollapse } = useCollapse();  // Função para alternar o estado de colapso
   const [isMenuVisible, setIsMenuVisible] = useState(false); // Estado para controlar a visibilidade do menu

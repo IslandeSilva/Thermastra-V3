@@ -1,7 +1,17 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { useNavigate } from 'react-router-dom';
+
 const UserMenu = () => {
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('authToken'); // Remove o token
+    navigate('/Login'); // Redireciona para a página de login
+  };
+
 
 
   return (
@@ -28,10 +38,10 @@ const UserMenu = () => {
             Meus Tickets</button></a>
         </li>
         <li>
-        <a href='/Logout' style={{ textDecoration: "none"}}>
-          <button className="dropdown-item">
+        
+          <button className="dropdown-item" onClick={handleLogout}>
             <i className='bi bi-box-arrow-left' style={{ marginRight: "10px" }}></i>
-            Sair</button></a>
+            Sair</button>
         </li>
       </ul>
     </div>
